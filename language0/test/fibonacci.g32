@@ -1,0 +1,77 @@
+	.data
+string: .string "%d\n"
+var_old1: .long 0
+var_old2: .long 0
+var_current: .long 0
+var_i: .long 0
+
+	.text
+	.globl	main
+main:
+	pushl	%ebp
+	movl	%esp,	%ebp
+
+	push	$1
+	pop	var_old1
+
+	push	(var_old1)
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	push	$1
+	pop	var_old2
+
+	push	(var_old2)
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	push	$3
+	pop	var_i
+
+label_1:		#while -> label_0
+	push	(var_i)
+	push	$10
+	pop	%ebx
+	pop	%eax
+	subl	%ebx,	%eax
+	push	%eax
+	pop	%eax
+	cmp	$0,	%eax
+	je	label_0
+
+	push	(var_old1)
+	push	(var_old2)
+	pop	%ebx
+	pop	%eax
+	addl	%ebx,	%eax
+	push	%eax
+	pop	var_current
+
+	push	(var_current)
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	push	(var_old1)
+	pop	var_old2
+
+	push	(var_current)
+	pop	var_old1
+
+	push	(var_i)
+	push	$1
+	pop	%ebx
+	pop	%eax
+	addl	%ebx,	%eax
+	push	%eax
+	pop	var_i
+
+	jmp	label_1
+label_0:		#end while <- label_1
+
+	movl	$0,	%eax	# return 0
+	leave
+	ret
+

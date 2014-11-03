@@ -1,0 +1,49 @@
+variables {
+	foo;
+}
+
+code {
+	foo = 3;
+
+    # should print 1
+	if(foo) {
+		print 1;
+	}
+
+    # should not print 2
+    # should print 3
+    if(!foo) {
+        print 2;
+    } else {
+        print 3;
+    }
+
+    # should print 4 three times
+	while(foo) {
+		print 4;
+		foo = foo - 1;
+	}
+
+    # should not print 5
+    # should print 6
+	if(3 - (2 + 1)) {
+		print 5;
+	} else {
+        print 6;
+    }
+
+    # should not print 7
+	while(3 - (2 + 1)) {
+		print 7;
+	}
+
+    # should print 8
+	if(4 - (2 + 1)) {
+		print 8;
+	}
+    
+    # should print 9
+    if(foo + (2 + 1)) {
+        print 9;
+    }
+}

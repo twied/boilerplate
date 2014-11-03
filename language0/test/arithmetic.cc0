@@ -1,0 +1,69 @@
+# variables
+	push	0	# foo
+	push	0	# bar
+# code
+	push	0	# address of foo
+	push	15	# value
+	store
+
+	push	1	# address of bar
+	push	3	# value
+	store
+
+	push	0	# address of foo
+	load
+	push	1	# address of bar
+	load
+	op_add
+	print
+
+	push	0	# address of foo
+	load
+	push	1	# address of bar
+	load
+	op_sub
+	print
+
+	push	1	# address of bar
+	load
+	push	0	# address of foo
+	load
+	op_sub
+	print
+
+	push	0	# address of foo
+	load
+	push	1	# address of bar
+	load
+	op_mul
+	print
+
+	push	0	# address of foo
+	load
+	push	1	# address of bar
+	load
+	op_div
+	print
+
+	push	0	# address of foo
+	load
+	push	1	# address of bar
+	load
+	op_grt
+	print
+
+	push	0	# address of foo
+	load
+	push	1	# address of bar
+	load
+	op_les
+	print
+
+	push	0	# address of foo
+	load
+	push	1	# address of bar
+	load
+	op_eql
+	print
+
+	halt

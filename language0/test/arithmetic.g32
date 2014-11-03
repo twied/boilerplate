@@ -1,0 +1,108 @@
+	.data
+string: .string "%d\n"
+var_foo: .long 0
+var_bar: .long 0
+
+	.text
+	.globl	main
+main:
+	pushl	%ebp
+	movl	%esp,	%ebp
+
+	push	$15
+	pop	var_foo
+
+	push	$3
+	pop	var_bar
+
+	push	(var_foo)
+	push	(var_bar)
+	pop	%ebx
+	pop	%eax
+	addl	%ebx,	%eax
+	push	%eax
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	push	(var_foo)
+	push	(var_bar)
+	pop	%ebx
+	pop	%eax
+	subl	%ebx,	%eax
+	push	%eax
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	push	(var_bar)
+	push	(var_foo)
+	pop	%ebx
+	pop	%eax
+	subl	%ebx,	%eax
+	push	%eax
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	push	(var_foo)
+	push	(var_bar)
+	pop	%ebx
+	pop	%eax
+	imull	%ebx,	%eax
+	push	%eax
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	push	(var_foo)
+	push	(var_bar)
+	pop	%ebx
+	pop	%eax
+	cltd
+	idivl	%ebx
+	push	%eax
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	push	(var_foo)
+	push	(var_bar)
+	pop	%ebx
+	pop	%eax
+	cmpl	%ebx,	%eax
+	setg	%al
+	movzbl	%al,	%eax
+	push	%eax
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	push	(var_foo)
+	push	(var_bar)
+	pop	%ebx
+	pop	%eax
+	cmpl	%ebx,	%eax
+	setl	%al
+	movzbl	%al,	%eax
+	push	%eax
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	push	(var_foo)
+	push	(var_bar)
+	pop	%ebx
+	pop	%eax
+	cmpl	%ebx,	%eax
+	sete	%al
+	movzbl	%al,	%eax
+	push	%eax
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	movl	$0,	%eax	# return 0
+	leave
+	ret
+

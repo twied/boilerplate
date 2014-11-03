@@ -1,0 +1,167 @@
+	.data
+string: .string "%d\n"
+var_foo: .long 0
+
+	.text
+	.globl	main
+main:
+	pushl	%ebp
+	movl	%esp,	%ebp
+
+	push	$3
+	pop	var_foo
+
+	push	(var_foo)
+	pop	%eax
+	cmpl	$0,	%eax
+	je	label_0
+	push	$1
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+label_0:
+
+	push	(var_foo)
+	pop	%eax
+cmpl	$0,	%eax
+sete	%al
+movzbl	%al,	%eax
+	push	%eax
+	pop	%eax
+	cmpl	$0,	%eax
+	je	label_1
+	push	$2
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	jmp	label_2
+label_1:
+	push	$3
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+label_2:
+
+label_4:		#while -> label_3
+	push	(var_foo)
+	pop	%eax
+	cmp	$0,	%eax
+	je	label_3
+
+	push	$4
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	push	(var_foo)
+	push	$1
+	pop	%ebx
+	pop	%eax
+	subl	%ebx,	%eax
+	push	%eax
+	pop	var_foo
+
+	jmp	label_4
+label_3:		#end while <- label_4
+
+	push	$3
+	push	$2
+	push	$1
+	pop	%ebx
+	pop	%eax
+	addl	%ebx,	%eax
+	push	%eax
+	pop	%ebx
+	pop	%eax
+	subl	%ebx,	%eax
+	push	%eax
+	pop	%eax
+	cmpl	$0,	%eax
+	je	label_5
+	push	$5
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	jmp	label_6
+label_5:
+	push	$6
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+label_6:
+
+label_8:		#while -> label_7
+	push	$3
+	push	$2
+	push	$1
+	pop	%ebx
+	pop	%eax
+	addl	%ebx,	%eax
+	push	%eax
+	pop	%ebx
+	pop	%eax
+	subl	%ebx,	%eax
+	push	%eax
+	pop	%eax
+	cmp	$0,	%eax
+	je	label_7
+
+	push	$7
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+	jmp	label_8
+label_7:		#end while <- label_8
+
+	push	$4
+	push	$2
+	push	$1
+	pop	%ebx
+	pop	%eax
+	addl	%ebx,	%eax
+	push	%eax
+	pop	%ebx
+	pop	%eax
+	subl	%ebx,	%eax
+	push	%eax
+	pop	%eax
+	cmpl	$0,	%eax
+	je	label_9
+	push	$8
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+label_9:
+
+	push	(var_foo)
+	push	$2
+	push	$1
+	pop	%ebx
+	pop	%eax
+	addl	%ebx,	%eax
+	push	%eax
+	pop	%ebx
+	pop	%eax
+	addl	%ebx,	%eax
+	push	%eax
+	pop	%eax
+	cmpl	$0,	%eax
+	je	label_10
+	push	$9
+	push	$string
+	call	printf
+	addl	$8,	%esp
+
+label_10:
+
+	movl	$0,	%eax	# return 0
+	leave
+	ret
+

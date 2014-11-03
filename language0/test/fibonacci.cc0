@@ -1,0 +1,65 @@
+# variables
+	push	0	# old1
+	push	0	# old2
+	push	0	# current
+	push	0	# i
+# code
+	push	0	# address of old1
+	push	1	# value
+	store
+
+	push	0	# address of old1
+	load
+	print
+
+	push	1	# address of old2
+	push	1	# value
+	store
+
+	push	1	# address of old2
+	load
+	print
+
+	push	3	# address of i
+	push	3	# value
+	store
+
+label_1:		#while -> label_0
+	push	3	# address of i
+	load
+	push	10	# value
+	op_sub
+	jumpz	label_0
+	push	2	# address of current
+	push	0	# address of old1
+	load
+	push	1	# address of old2
+	load
+	op_add
+	store
+
+	push	2	# address of current
+	load
+	print
+
+	push	1	# address of old2
+	push	0	# address of old1
+	load
+	store
+
+	push	0	# address of old1
+	push	2	# address of current
+	load
+	store
+
+	push	3	# address of i
+	push	3	# address of i
+	load
+	push	1	# value
+	op_add
+	store
+
+	jump	label_1
+label_0:
+
+	halt

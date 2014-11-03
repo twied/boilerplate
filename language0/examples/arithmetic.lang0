@@ -1,0 +1,33 @@
+variables {
+	foo;
+	bar;
+}
+
+code {
+	foo = 15;
+	bar = 3;
+
+    # should print 18
+	print foo + bar;
+    
+    # should print 12
+	print foo - bar;
+    
+    # should print -12
+    print bar - foo;
+    
+    # should print 45
+	print foo * bar;
+    
+    # should print 5
+	print foo / bar;
+
+    # should print 1
+    print foo > bar;
+    
+    # should print 0
+    print foo < bar;
+    
+    # should print 0
+    print foo == bar;
+}

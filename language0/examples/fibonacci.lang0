@@ -1,0 +1,24 @@
+variables {
+	old1;
+	old2;
+	current;
+	i;
+}
+
+code {
+	old1 = 1;
+	print old1;
+	
+	old2 = 1;
+	print old2;
+	
+	i = 3;
+	while (i - 10) {
+		current = old1 + old2;
+		print current;
+		
+		old2 = old1;
+		old1 = current;
+		i = i + 1;
+	}
+}
