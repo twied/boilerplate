@@ -7,3 +7,7 @@ language0 is a very simple, maybe the most simple programming language. This pro
 tcpunix
 -------
 TCP client / server demonstration for unix.
+
+webcamjava
+----------
+How to access your web cam with java on linux.

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<project name="WebCam" default="run" basedir=".">
+	<target name="clean">
+		<delete file="WebCam.class" />
+	</target>
+	<target name="compile">
+		<javac
+			srcdir="."
+			destdir="."
+			includeantruntime="false"
+			debug="true"
+			debuglevel="lines,vars,source"
+		/>
+	</target>
+	<target name="run" depends="compile">
+		<java classname="WebCam" fork="true" spawn="true"/>
+	</target>
+</project>
